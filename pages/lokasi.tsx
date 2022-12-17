@@ -1,19 +1,34 @@
-import { NextPage } from "next"
+import { GetServerSideProps, NextPage, InferGetServerSidePropsType } from "next"
 import BaseHead from "../components/shared/BaseHead"
 import BaseLayout from "../components/layout/BaseLayout"
-import { Text } from "@chakra-ui/react"
+import ProvinsiSelect from "../components/ProvinsiSelect"
+import { ProvinsiList } from "../utils/types"
 
-interface Props {}
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-const Lokasi: NextPage<Props> = () => {
+const Lokasi: NextPage<Props> = ({ provinsiList }) => {
   return (
     <>
       <BaseHead title="Lokasi | MyWeatherID" />
       <BaseLayout>
-        <Text color="brand.secondary">Lokasi Page</Text>
+        <ProvinsiSelect provinsiList={provinsiList} />
       </BaseLayout>
     </>
   )
+}
+
+interface ServerProps {
+  provinsiList: ProvinsiList
+}
+
+export const getServerSideProps: GetServerSideProps<ServerProps> = async () => {
+  const provinsiData = await fetch("https://provinsi-json.vercel.app/")
+  const jsonProvinsi = await provinsiData.json()
+  return {
+    props: {
+      provinsiList: jsonProvinsi,
+    },
+  }
 }
 
 export default Lokasi

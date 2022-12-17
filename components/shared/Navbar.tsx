@@ -18,7 +18,7 @@ const Navbar: FC<Props> = ({ navItems }) => {
     <React.Fragment key={item.href}>
       <Link href={item.href}>
         <Text
-          fontSize={20}
+          fontSize={18}
           color={item.href === pathname ? "brand.accent" : "brand.secondary"}
         >
           {item.label}
@@ -29,7 +29,7 @@ const Navbar: FC<Props> = ({ navItems }) => {
   )
 
   return (
-    <Flex w="100vw" py={5} px="15%" bgColor="brand.other" mb={10} shadow="lg">
+    <Flex w="100vw" py={4} px="15%" bgColor="brand.other" mb={8} shadow="lg">
       <Flex w="100%">
         {navItems.map((item, index) => renderNavItem(item, index))}
       </Flex>

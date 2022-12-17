@@ -6,11 +6,17 @@ interface Props {}
 const TanggalList: FC<Props> = () => {
   return (
     <Flex w="100%">
-      <Text color="brand.secondary">25 November</Text>
+      <Text fontSize={18} color="brand.secondary">
+        25 November
+      </Text>
       <Spacer />
-      <Text color="brand.secondary">26 November</Text>
+      <Text fontSize={18} color="brand.secondary">
+        26 November
+      </Text>
       <Spacer />
-      <Text color="brand.secondary">27 November</Text>
+      <Text fontSize={18} color="brand.secondary">
+        27 November
+      </Text>
     </Flex>
   )
 }
