@@ -1,11 +1,9 @@
 import { Select } from "@chakra-ui/react"
 import { FC } from "react"
+import { ProvinsiList } from "../utils/types"
 
 interface Props {
-  provinsiList: {
-    id: string
-    name: string
-  }[]
+  provinsiList: ProvinsiList
 }
 
 const ProvinsiSelect: FC<Props> = ({ provinsiList }) => {

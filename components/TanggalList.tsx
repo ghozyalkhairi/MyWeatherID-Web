@@ -5,16 +5,28 @@ interface Props {}
 
 const TanggalList: FC<Props> = () => {
   return (
-    <Flex w="100%">
-      <Text fontSize={18} color="brand.secondary">
+    <Flex w="100%" pb={2}>
+      <Text
+        _hover={{ cursor: "pointer" }}
+        fontSize={18}
+        color="brand.secondary"
+      >
         25 November
       </Text>
       <Spacer />
-      <Text fontSize={18} color="brand.secondary">
+      <Text
+        _hover={{ cursor: "pointer" }}
+        fontSize={18}
+        color="brand.secondary"
+      >
         26 November
       </Text>
       <Spacer />
-      <Text fontSize={18} color="brand.secondary">
+      <Text
+        _hover={{ cursor: "pointer" }}
+        fontSize={18}
+        color="brand.secondary"
+      >
         27 November
       </Text>
     </Flex>
