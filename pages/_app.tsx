@@ -1,13 +1,16 @@
 import type { AppProps } from "next/app"
 import { ChakraProvider, Portal, Progress } from "@chakra-ui/react"
-import { theme } from "../theme"
-import "@fontsource/poppins"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useRouter } from "next/router"
+import { useLoading, useCuacaActions } from "../stores/cuacaStore"
+import { theme } from "../theme"
+import "../styles/globals.css"
+import "@fontsource/poppins"
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
-  const [loading, setLoading] = useState(false)
+  const loading = useLoading()
+  const { setLoading } = useCuacaActions()
   useEffect(() => {
     const start = () => setLoading(true)
     const end = () => setLoading(false)

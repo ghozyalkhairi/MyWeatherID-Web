@@ -4,3 +4,28 @@ export interface Provinsi {
 }
 
 export type ProvinsiList = Provinsi[]
+
+export interface DataCuaca {
+  $: {
+    id: string
+  }
+  timerange: {
+    $: {
+      datetime: string
+      h: string
+    }
+    value: {
+      _: string
+    }
+  }[]
+}
+
+export interface DataKota {
+  $: {
+    description: string
+    domain: string
+  }
+  parameter: DataCuaca[]
+}
+
+export type DataProvinsi = DataKota[]

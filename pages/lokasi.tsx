@@ -3,6 +3,7 @@ import BaseHead from "../components/shared/BaseHead"
 import BaseLayout from "../components/layout/BaseLayout"
 import ProvinsiSelect from "../components/ProvinsiSelect"
 import { ProvinsiList } from "../utils/types"
+import KotaList from "../components/KotaList"
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
@@ -12,6 +13,7 @@ const Lokasi: NextPage<Props> = ({ provinsiList }) => {
       <BaseHead title="Lokasi | MyWeatherID" />
       <BaseLayout>
         <ProvinsiSelect provinsiList={provinsiList} />
+        <KotaList />
       </BaseLayout>
     </>
   )
