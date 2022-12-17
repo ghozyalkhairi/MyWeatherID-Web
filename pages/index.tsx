@@ -1,15 +1,16 @@
 import { NextPage } from "next"
 import { Button, Flex, Text, VStack } from "@chakra-ui/react"
-import Head from "next/head"
 import Image from "next/image"
 import LogoImg from "../assets/images/Logo.png"
 import BaseLayout from "../components/layout/BaseLayout"
 import Link from "next/link"
 import BaseHead from "../components/shared/BaseHead"
+import { useUserLocation } from "../stores/cuacaStore"
 
 interface Props {}
 
 const Home: NextPage<Props> = () => {
+  const { provinsiId, kota } = useUserLocation()
   return (
     <>
       <BaseHead title="MyWeatherID" />
@@ -29,7 +30,7 @@ const Home: NextPage<Props> = () => {
               Cek cuaca di lokasi anda dengan mudah
             </Text>
           </VStack>
-          <Link href="/beranda">
+          <Link href={`/cuaca/${provinsiId}/${kota}`}>
             <Button w="50vw" py={8} fontSize={24} bgColor="brand.accent">
               <Text>Mulai</Text>
             </Button>

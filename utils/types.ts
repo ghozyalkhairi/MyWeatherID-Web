@@ -16,7 +16,7 @@ export interface DataCuaca {
     }
     value: {
       _: string
-    }
+    }[]
   }[]
 }
 
@@ -29,3 +29,11 @@ export interface DataKota {
 }
 
 export type DataProvinsi = DataKota[]
+
+export interface CuacaKota {
+  waktu: string
+  gambar: string
+  suhu: string
+}
+
+export type CuacaKotaList = CuacaKota[]

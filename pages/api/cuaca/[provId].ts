@@ -1,6 +1,6 @@
 import { NextApiHandler } from "next"
 
-const getCuacaData = async (id: string) => {
+export const getCuacaData = async (id: string) => {
   const baseUrl = "https://cuaca-json.vercel.app"
   const dataCuaca = await fetch(`${baseUrl}${getProvURL(id)}`)
   return await dataCuaca.json()

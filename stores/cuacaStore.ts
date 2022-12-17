@@ -1,4 +1,6 @@
 import create from "zustand"
+import { format, parseISO } from "date-fns"
+import { id } from "date-fns/locale"
 
 interface CuacaState {
   userLocation: {
@@ -8,6 +10,10 @@ interface CuacaState {
   }
   provPickerValue: string
   loading: boolean
+  currentDate: {
+    formatted: string
+    raw: string
+  }
   actions: {
     onLocationChange: (location: {
       kota: string
@@ -27,6 +33,10 @@ const useCuacaStore = create<CuacaState>((set, get) => ({
   },
   provPickerValue: "61",
   loading: false,
+  currentDate: {
+    formatted: format(new Date(), "EEEE, dd MMM", { locale: id }),
+    raw: format(new Date(), "yyyyMMdd"),
+  },
   actions: {
     onLocationChange: (location) => set({ userLocation: location }),
     setLoading: (loading) => set({ loading }),
@@ -39,4 +49,5 @@ export const useUserLocation = () =>
 export const useProvPickerValue = () =>
   useCuacaStore((state) => state.provPickerValue)
 export const useLoading = () => useCuacaStore((state) => state.loading)
+export const useCurrentDate = () => useCuacaStore((state) => state.currentDate)
 export const useCuacaActions = () => useCuacaStore((state) => state.actions)

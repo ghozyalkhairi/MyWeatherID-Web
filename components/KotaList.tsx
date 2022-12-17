@@ -33,12 +33,13 @@ const KotaList: FC<Props> = () => {
       setKotaList(dataKota)
       setItemOffset(0)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading, provPickerValue])
   return (
     <>
       <Flex w="100%" direction="column">
         {isLoading ? (
-          <Center py={12}>
+          <Center h="60vh" py={12}>
             <Spinner color="brand.accent" size="xl" />
           </Center>
         ) : (

@@ -1,6 +1,7 @@
 import { VStack } from "@chakra-ui/react"
 import { FC, ReactNode } from "react"
 import Navbar from "../shared/Navbar"
+import { useUserLocation } from "../../stores/cuacaStore"
 
 interface Props {
   children: ReactNode
@@ -8,14 +9,15 @@ interface Props {
 }
 
 const BaseLayout: FC<Props> = ({ children, splash }) => {
+  const { provinsiId, kota } = useUserLocation()
   const navItems = [
     {
       href: "/lokasi",
       label: "Lokasi",
     },
     {
-      href: "/beranda",
-      label: "Beranda",
+      href: `/cuaca/${provinsiId}/${kota}`,
+      label: "Cuaca",
     },
     {
       href: "/info",

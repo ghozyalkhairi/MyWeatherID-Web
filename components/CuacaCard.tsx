@@ -1,8 +1,20 @@
+import { FC } from "react"
 import { Flex, Spacer, Text } from "@chakra-ui/react"
+import { useUserLocation, useCurrentDate } from "../stores/cuacaStore"
 import Image from "next/image"
 import LocationIcon from "../assets/icons/LocationIcon"
 
-const CuacaCard = () => {
+interface Props {
+  cuaca: {
+    waktu: string
+    suhu: string
+    gambar: string
+  }
+}
+
+const CuacaCard: FC<Props> = ({ cuaca }) => {
+  const { kota, provinsi } = useUserLocation()
+  const { formatted } = useCurrentDate()
   return (
     <Flex
       direction="column"
@@ -14,32 +26,27 @@ const CuacaCard = () => {
     >
       <Flex p={4} align="center">
         <Text fontSize={22} color="brand.secondary">
-          Siang Ini
+          {cuaca.waktu} Ini
         </Text>
         <Spacer />
         <Text fontWeight="light" fontSize={18} color="brand.secondary">
-          Sabtu, 26 Nov
+          {formatted}
         </Text>
       </Flex>
       <Flex my={4} p={4} align="center">
         <Text fontSize={34} fontWeight="bold" color="brand.secondary">
-          30
+          {cuaca.suhu}
           <Text as="span" color="brand.accent">
             ºC
           </Text>
         </Text>
         <Spacer />
-        <Image
-          alt="Cuaca Icon"
-          src="https://i.ibb.co/9VVYNQv/cerahberawan-am.png"
-          width={160}
-          height={160}
-        />
+        <Image alt="Cuaca Icon" src={cuaca.gambar} width={140} height={140} />
       </Flex>
       <Flex p={4} align="center" justify="center">
         <LocationIcon width="20" height="20" />
         <Text ml={2} fontWeight="light" color="brand.secondary">
-          Pontianak, Kalimantan Barat
+          {kota}, {provinsi}
         </Text>
       </Flex>
     </Flex>

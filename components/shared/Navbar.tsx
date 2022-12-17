@@ -14,19 +14,35 @@ interface Props {
 
 const Navbar: FC<Props> = ({ navItems }) => {
   const { pathname } = useRouter()
-  const renderNavItem = (item: NavItem, index: number) => (
-    <React.Fragment key={item.href}>
-      <Link href={item.href}>
-        <Text
-          fontSize={18}
-          color={item.href === pathname ? "brand.accent" : "brand.secondary"}
-        >
-          {item.label}
-        </Text>
-      </Link>
-      {index === navItems.length - 1 ? null : <Spacer />}
-    </React.Fragment>
-  )
+  const currentPath = (item: NavItem) => {
+    switch (true) {
+      case item.href === pathname:
+        return true
+      default:
+        if (
+          item.href.includes("/cuaca/") &&
+          pathname === "/cuaca/[provId]/[kota]"
+        ) {
+          return true
+        }
+        return false
+    }
+  }
+  const renderNavItem = (item: NavItem, index: number) => {
+    return (
+      <React.Fragment key={item.href}>
+        <Link href={item.href}>
+          <Text
+            fontSize={18}
+            color={currentPath(item) ? "brand.accent" : "brand.secondary"}
+          >
+            {item.label}
+          </Text>
+        </Link>
+        {index === navItems.length - 1 ? null : <Spacer />}
+      </React.Fragment>
+    )
+  }
 
   return (
     <Flex w="100vw" py={4} px="15%" bgColor="brand.other" mb={8} shadow="lg">
