@@ -17,6 +17,7 @@ const ProvinsiSelect: FC<Props> = ({ provinsiList }) => {
       bg="brand.primary"
       borderColor="brand.accent"
       iconColor="brand.accent"
+      fontSize={17}
       mb={2}
       value={provPickerValue}
       onChange={(e) => setProvPickerValue(e.target.value)}

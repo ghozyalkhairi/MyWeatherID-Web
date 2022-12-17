@@ -10,7 +10,7 @@ const Info: NextPage<Props> = () => {
     <>
       <BaseHead title="Info | MyWeatherID" />
       <BaseLayout>
-        <Text color="brand.secondary">Info Page</Text>
+        <Text color="brand.secondary">Info</Text>
       </BaseLayout>
     </>
   )

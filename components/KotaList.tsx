@@ -31,6 +31,7 @@ const KotaList: FC<Props> = () => {
         if (kota.parameter) return kota
       })
       setKotaList(dataKota)
+      setItemOffset(0)
     }
   }, [isLoading, provPickerValue])
   return (
