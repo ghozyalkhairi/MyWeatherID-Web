@@ -80,7 +80,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
 ) => {
   try {
     const currentDate = format(new Date(), "yyyyMMdd")
-    const currentTime = format(new Date(), "kkmm", { locale: id })
+    const currentTime = format(new Date(), "km")
     const { provId, kota } = context.params as ParamsQuery
     const dataCuaca: DataProvinsi = await getCuacaData(provId)
     const dataKota = dataCuaca.filter((item) => item.parameter)
