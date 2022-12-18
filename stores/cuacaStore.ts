@@ -37,7 +37,7 @@ interface CuacaState {
     setProvPickerValue: (id: string) => void
     setDataCuaca: (data: { cuacaKota: DataCuaca; suhuKota: DataCuaca }) => void
     setDatePickerValue: (date: string) => void
-    resetDatePickerValue: () => void
+    resetDataCuaca: () => void
   }
 }
 
@@ -103,9 +103,9 @@ const useCuacaStore = create<CuacaState>((set, get) => ({
     setLoading: (loading) => set({ loading }),
     setProvPickerValue: (id) => set({ provPickerValue: id }),
     setDatePickerValue: (datePickerValue) => set({ datePickerValue }),
-    resetDatePickerValue: () => {
+    resetDataCuaca: () => {
       const currentDate = get().currentDate.raw
-      set({ datePickerValue: currentDate })
+      set({ datePickerValue: currentDate, cuacaListCopy: [] })
     },
   },
 }))
