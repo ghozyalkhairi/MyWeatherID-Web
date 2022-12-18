@@ -16,18 +16,18 @@ const CuacaItem: FC<Props> = ({ cuaca }) => {
       bgColor="brand.primary"
       direction="column"
       py={2}
-      w="15%"
+      w="14%"
       borderRadius={10}
       shadow="lg"
     >
-      <Text mb={3} fontSize={18} textAlign="center" color="brand.secondary">
+      <Text mb={3} fontSize={20} textAlign="center" color="brand.secondary">
         {cuaca.waktu}
       </Text>
       <Center>
         <Image alt="Cuaca Icon" src={cuaca.gambar} width={50} height={50} />
       </Center>
       <Text mt={3} fontSize={18} textAlign="center" color="brand.secondary">
-        {cuaca.suhu}
+        {cuaca.suhu} ºC
       </Text>
     </Flex>
   )

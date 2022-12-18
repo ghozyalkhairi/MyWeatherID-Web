@@ -13,10 +13,15 @@ import { id } from "date-fns/locale"
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-const Cuaca: NextPage<Props> = ({ cuacaList, tanggalList }) => {
+const Cuaca: NextPage<Props> = ({ cuacaList, tanggalList, lokasi }) => {
+  const { kota, provinsi } = lokasi
   return (
     <>
-      <BaseHead title="Cuaca | MyWeatherID" />
+      <BaseHead
+        title={`Prakiraan Cuaca ${kota} - ${provinsi} | MyWeatherID`}
+        kota={kota}
+        provinsi={provinsi}
+      />
       <BaseLayout>
         <CuacaCard cuaca={cuacaList[0]} />
         <TanggalList tanggalList={tanggalList} />
@@ -36,9 +41,14 @@ interface ServerSideProps {
     formatted: string
     raw: string
   }[]
+  lokasi: {
+    kota: string
+    provinsi: string
+    provinsiId: string
+  }
 }
 
-interface IServerProps extends ParsedUrlQuery {
+interface ParamsQuery extends ParsedUrlQuery {
   provId: string
   kota: string
 }
@@ -47,9 +57,15 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
   context
 ) => {
   const currentDate = format(new Date(), "yyyyMMdd")
-  const { provId, kota } = context.params as IServerProps
+  const { provId, kota } = context.params as ParamsQuery
   const dataCuaca: DataProvinsi = await getCuacaData(provId)
   const dataKota = dataCuaca.filter((item) => item.parameter)
+  const kotaUser = dataKota.find(
+    (item) => item.$.description.trim() === kota.trim()
+  )?.$.description as string
+  const provinsiUser = dataKota.find(
+    (item) => item.$.description.trim() === kota.trim()
+  )?.$.domain as string
   const cuacaKota = dataKota.find(
     (item) => item.$.description.trim() === kota.trim()
   )?.parameter[6] as DataCuaca
@@ -101,6 +117,11 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
     props: {
       cuacaList: listData,
       tanggalList: listTanggal,
+      lokasi: {
+        kota: kotaUser,
+        provinsi: provinsiUser,
+        provinsiId: provId,
+      },
     },
   }
 }

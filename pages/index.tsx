@@ -31,7 +31,7 @@ const Home: NextPage<Props> = () => {
             </Text>
           </VStack>
           <Link href={`/cuaca/${provinsiId}/${kota}`}>
-            <Button w="50vw" py={8} fontSize={24} bgColor="brand.accent">
+            <Button w="50vw" py={7} fontSize={24} bgColor="brand.accent">
               <Text>Mulai</Text>
             </Button>
           </Link>
