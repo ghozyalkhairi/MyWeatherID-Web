@@ -6,9 +6,10 @@ import { useUserLocation } from "../../stores/cuacaStore"
 interface Props {
   children: ReactNode
   splash?: boolean
+  notfound?: boolean
 }
 
-const BaseLayout: FC<Props> = ({ children, splash }) => {
+const BaseLayout: FC<Props> = ({ children, splash, notfound }) => {
   const { provinsiId, kota } = useUserLocation()
   const navItems = [
     {
@@ -30,7 +31,7 @@ const BaseLayout: FC<Props> = ({ children, splash }) => {
       h="100vh"
       bgGradient="linear(to-b, #11123E, #1C1D4BE5)"
     >
-      {splash ? null : <Navbar navItems={navItems} />}
+      {splash || notfound ? null : <Navbar navItems={navItems} />}
       <VStack w="100%" px="15%">
         {children}
       </VStack>

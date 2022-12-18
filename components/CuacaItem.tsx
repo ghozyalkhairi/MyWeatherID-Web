@@ -8,15 +8,16 @@ interface Props {
     gambar: string
     suhu: string
   }
+  small?: boolean
 }
 
-const CuacaItem: FC<Props> = ({ cuaca }) => {
+const CuacaItem: FC<Props> = ({ cuaca, small }) => {
   return (
     <Flex
       bgColor="brand.primary"
       direction="column"
       py={2}
-      w="14%"
+      w={small ? "30%" : "15%"}
       borderRadius={10}
       shadow="lg"
     >

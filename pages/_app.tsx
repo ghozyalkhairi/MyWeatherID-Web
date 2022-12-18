@@ -10,11 +10,13 @@ import "@fontsource/poppins"
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
   const loading = useLoading()
-  const { setLoading } = useCuacaActions()
+  const { setLoading, resetDatePickerValue } = useCuacaActions()
   useEffect(() => {
     const start = () => setLoading(true)
-    const end = () => setLoading(false)
-
+    const end = () => {
+      resetDatePickerValue()
+      setLoading(false)
+    }
     router.events.on("routeChangeStart", start)
     router.events.on("routeChangeComplete", end)
     router.events.on("routeChangeError", end)
