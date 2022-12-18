@@ -11,7 +11,9 @@ import { ParsedUrlQuery } from "querystring"
 import { DataCuaca, DataProvinsi } from "../../../utils/types"
 import imgPath from "../../../utils/imageUrl"
 import { format, parseISO } from "date-fns"
+import { formatInTimeZone } from "date-fns-tz"
 import { id } from "date-fns/locale"
+import getZonaWaktu from "../../../utils/zonaWaktu"
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
@@ -80,7 +82,6 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
 ) => {
   try {
     const currentDate = format(new Date(), "yyyyMMdd")
-    const currentTime = format(new Date(), "km")
     const { provId, kota } = context.params as ParamsQuery
     const dataCuaca: DataProvinsi = await getCuacaData(provId)
     const dataKota = dataCuaca.filter((item) => item.parameter)
@@ -90,6 +91,11 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
     const provinsiUser = dataKota.find(
       (item) => item.$.description.trim().toLowerCase() === kota.trim()
     )?.$.domain as string
+    const currentTime = formatInTimeZone(
+      new Date(),
+      getZonaWaktu(provinsiUser),
+      "km"
+    )
     const cuacaKota = dataKota.find(
       (item) => item.$.description.trim().toLowerCase() === kota.trim()
     )?.parameter[6] as DataCuaca
