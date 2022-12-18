@@ -17,7 +17,7 @@ const BaseLayout: FC<Props> = ({ children, splash, notfound }) => {
       label: "Lokasi",
     },
     {
-      href: `/cuaca/${provinsiId}/${kota.trim().toLocaleLowerCase()}`,
+      href: `/cuaca/${provinsiId}/${kota.trim().toLowerCase()}`,
       label: "Cuaca",
     },
     {
