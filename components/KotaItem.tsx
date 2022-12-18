@@ -21,7 +21,9 @@ const KotaItem: FC<Props> = ({ kota }) => {
           provinsiId: provPickerValue,
         })
       }
-      href={`/cuaca/${provPickerValue}/${kota.$.description}`}
+      href={`/cuaca/${provPickerValue}/${kota.$.description
+        .trim()
+        .toLowerCase()}`}
     >
       <Flex
         w="100%"

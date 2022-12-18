@@ -18,7 +18,7 @@ const NotFound: NextPage = () => {
           <Text my={12} fontSize={28} color="brand.secondary">
             Wah.. Halaman ini tidak ditemukan
           </Text>
-          <Link href={`/cuaca/${provinsiId}/${kota}`}>
+          <Link href={`/cuaca/${provinsiId}/${kota.trim().toLowerCase()}`}>
             <Button w="36vw" py={7} fontSize={24} bgColor="brand.accent">
               <Text>Kembali ke Beranda</Text>
             </Button>

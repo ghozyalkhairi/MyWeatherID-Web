@@ -30,7 +30,7 @@ const Home: NextPage<Props> = () => {
               Cek cuaca di lokasi anda dengan mudah
             </Text>
           </VStack>
-          <Link href={`/cuaca/${provinsiId}/${kota}`}>
+          <Link href={`/cuaca/${provinsiId}/${kota.trim().toLowerCase()}`}>
             <Button w="50vw" py={7} fontSize={24} bgColor="brand.accent">
               <Text>Mulai</Text>
             </Button>
