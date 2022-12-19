@@ -1,11 +1,11 @@
-import { GetServerSideProps, NextPage, InferGetServerSidePropsType } from "next"
+import { NextPage, InferGetStaticPropsType, GetStaticProps } from "next"
 import BaseHead from "../components/shared/BaseHead"
 import BaseLayout from "../components/layout/BaseLayout"
 import ProvinsiSelect from "../components/ProvinsiSelect"
 import { ProvinsiList } from "../utils/types"
 import KotaList from "../components/KotaList"
 
-type Props = InferGetServerSidePropsType<typeof getServerSideProps>
+type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const Lokasi: NextPage<Props> = ({ provinsiList }) => {
   return (
@@ -19,11 +19,11 @@ const Lokasi: NextPage<Props> = ({ provinsiList }) => {
   )
 }
 
-interface ServerProps {
+interface StaticProps {
   provinsiList: ProvinsiList
 }
 
-export const getServerSideProps: GetServerSideProps<ServerProps> = async () => {
+export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const provinsiData = await fetch("https://provinsi-json.vercel.app/")
   const jsonProvinsi = await provinsiData.json()
   return {
