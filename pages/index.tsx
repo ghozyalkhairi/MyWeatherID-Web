@@ -18,10 +18,16 @@ const Home: NextPage<Props> = () => {
         <Flex h="100vh" direction="column" align="center" justify="center">
           <Image src={LogoImg} alt="Logo" width={300} height={300} />
           <VStack my={8}>
-            <Text fontSize={40} fontWeight="bold" color="brand.secondary">
+            <Text
+              as="h1"
+              fontSize={40}
+              fontWeight="bold"
+              color="brand.secondary"
+            >
               MyWeatherID
             </Text>
             <Text
+              as="h2"
               fontSize={30}
               fontWeight="light"
               textAlign="center"
