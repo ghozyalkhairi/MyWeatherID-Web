@@ -43,9 +43,7 @@ const KotaList: FC<Props> = () => {
             <Spinner color="brand.accent" size="xl" />
           </Center>
         ) : (
-          currentList.map((kota) => (
-            <KotaItem key={kota.$.description} kota={kota} />
-          ))
+          currentList.map((kota) => <KotaItem key={kota.$.id} kota={kota} />)
         )}
       </Flex>
       {isLoading ? null : (

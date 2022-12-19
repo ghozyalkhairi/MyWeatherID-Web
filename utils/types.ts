@@ -22,6 +22,7 @@ export interface DataCuaca {
 
 export interface DataKota {
   $: {
+    id: string
     description: string
     domain: string
   }
