@@ -22,7 +22,7 @@ const KotaItem: FC<Props> = ({ kota }) => {
         })
       }
       href={`/cuaca/${provPickerValue}/${kota.$.description
-        .trim()
+        .replace(" ", "-")
         .toLowerCase()}`}
     >
       <Flex

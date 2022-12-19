@@ -86,10 +86,14 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
     const dataCuaca: DataProvinsi = await getCuacaData(provId)
     const dataKota = dataCuaca.filter((item) => item.parameter)
     const kotaUser = dataKota.find(
-      (item) => item.$.description.trim().toLowerCase() === kota.trim()
+      (item) =>
+        item.$.description.replace(" ", "").toLowerCase() ===
+        kota.replace("-", "")
     )?.$.description as string
     const provinsiUser = dataKota.find(
-      (item) => item.$.description.trim().toLowerCase() === kota.trim()
+      (item) =>
+        item.$.description.replace(" ", "").toLowerCase() ===
+        kota.replace("-", "")
     )?.$.domain as string
     const currentTime = formatInTimeZone(
       new Date(),
@@ -97,10 +101,14 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
       "km"
     )
     const cuacaKota = dataKota.find(
-      (item) => item.$.description.trim().toLowerCase() === kota.trim()
+      (item) =>
+        item.$.description.replace(" ", "").toLowerCase() ===
+        kota.replace("-", "")
     )?.parameter[6] as DataCuaca
     const suhuKota = dataKota.find(
-      (item) => item.$.description.trim().toLowerCase() === kota.trim()
+      (item) =>
+        item.$.description.replace(" ", "").toLowerCase() ===
+        kota.replace("-", "")
     )?.parameter[5] as DataCuaca
     const cuacaSuhuList = {
       cuaca: cuacaKota.timerange.filter(
