@@ -25,8 +25,8 @@ const CuacaCard: FC<Props> = ({ cuaca }) => {
       mb={6}
     >
       <Flex p={4} align="center">
-        <Text fontSize={22} color="brand.secondary">
-          {cuaca.waktu} Ini
+        <Text as="h1" fontSize={21} color="brand.secondary">
+          Cuaca {cuaca.waktu} Ini
         </Text>
         <Spacer />
         <Text fontWeight="light" fontSize={18} color="brand.secondary">
@@ -45,7 +45,7 @@ const CuacaCard: FC<Props> = ({ cuaca }) => {
       </Flex>
       <Flex p={4} align="center" justify="center">
         <LocationIcon width="20" height="20" />
-        <Text ml={2} fontWeight="light" color="brand.secondary">
+        <Text as="h2" ml={2} fontWeight="light" color="brand.secondary">
           {kota}, {provinsi}
         </Text>
       </Flex>
