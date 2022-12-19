@@ -102,15 +102,13 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
     const suhuKota = dataKota.find(
       (item) => item.$.description.trim().toLowerCase() === kota.trim()
     )?.parameter[5] as DataCuaca
-    const filteredCuaca = cuacaKota.timerange.filter(
-      (time) => time.$.datetime.slice(0, -4) === currentDate
-    )
-    const filteredSuhu = suhuKota.timerange.filter(
-      (time) => time.$.datetime.slice(0, -4) === currentDate
-    )
     const cuacaSuhuList = {
-      cuaca: filteredCuaca,
-      suhu: filteredSuhu,
+      cuaca: cuacaKota.timerange.filter(
+        (time) => time.$.datetime.slice(0, -4) === currentDate
+      ),
+      suhu: suhuKota.timerange.filter(
+        (time) => time.$.datetime.slice(0, -4) === currentDate
+      ),
     }
     const ketWaktu = (index: number) => {
       if (index === 0) return "Pagi"
