@@ -98,7 +98,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
     const currentTime = formatInTimeZone(
       new Date(),
       getZonaWaktu(provinsiUser),
-      "km"
+      "kkmm"
     )
     const cuacaKota = dataKota.find(
       (item) =>
