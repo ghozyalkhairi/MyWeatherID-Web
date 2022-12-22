@@ -11,8 +11,8 @@ interface CuacaState {
     provinsiId: string
   }
   dataCuaca: {
-    cuacaKota: DataCuaca | any[]
-    suhuKota: DataCuaca | any[]
+    cuacaKota: DataCuaca | never[]
+    suhuKota: DataCuaca | never[]
   }
   cuacaListCopy: {
     waktu: string

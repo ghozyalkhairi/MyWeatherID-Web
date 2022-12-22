@@ -21,7 +21,7 @@ const KotaList: FC<Props> = () => {
   const endOffset = itemOffset + itemsPerPage
   const currentList = kotaList.slice(itemOffset, endOffset)
   const pageCount = Math.ceil(kotaList.length / itemsPerPage)
-  const handlePageClick = (e: any) => {
+  const handlePageClick = (e: { selected: number }) => {
     const newOffset = (e.selected * itemsPerPage) % kotaList.length
     setItemOffset(newOffset)
   }
