@@ -41,7 +41,14 @@ const KotaItem: FC<Props> = ({ kota }) => {
         }}
       >
         <KotaIcon width="24" height="24" />
-        <Text ml={2} fontSize={19} color="brand.secondary">
+        <Text
+          ml={2}
+          fontSize={{
+            base: 16,
+            md: 18,
+          }}
+          color="brand.secondary"
+        >
           {kota.$.description}
         </Text>
       </Flex>
