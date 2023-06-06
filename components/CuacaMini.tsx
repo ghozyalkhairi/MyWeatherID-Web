@@ -17,7 +17,14 @@ const CuacaMini: FC<Props> = ({ cuacaList }) => {
   return (
     <Flex
       pt={2}
-      w={data.length < 3 ? "50%" : "100%"}
+      w={
+        data.length < 3
+          ? {
+              base: "100%",
+              md: "50%",
+            }
+          : "100%"
+      }
       direction={{
         base: "column",
         md: "row",
