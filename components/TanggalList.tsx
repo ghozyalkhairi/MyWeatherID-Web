@@ -23,7 +23,7 @@ const TanggalList: FC<Props> = ({ tanggalList }) => {
           <Text
             _hover={{ cursor: "pointer" }}
             fontSize={{
-              base: 16,
+              base: tanggal.raw === datePickerValue ? 15 : 13,
               md: 18,
             }}
             color={
@@ -40,7 +40,7 @@ const TanggalList: FC<Props> = ({ tanggalList }) => {
     ))
   }
   return (
-    <Flex w="100%" pb={2}>
+    <Flex w="100%" pb={2} justify="space-between" align="center">
       {renderTanggal()}
     </Flex>
   )
