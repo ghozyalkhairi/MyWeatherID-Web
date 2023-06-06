@@ -27,18 +27,20 @@ const BaseLayout: FC<Props> = ({ children, splash, notfound }) => {
     },
   ]
   return (
-    <VStack w="100%" h="100%" bgGradient="linear(to-b, #11123E, #1C1D4BE5)">
-      {splash || notfound ? null : <Navbar navItems={navItems} />}
-      <VStack
-        w="100%"
-        px={{
-          base: "6%",
-          md: "12%",
-        }}
-        h="100%"
-      >
-        {children}
-        <Footer />
+    <VStack w="100%" minH="100vh" bgGradient="linear(to-b, #11123E, #1C1D4BE5)">
+      <VStack w="100%" h="100%">
+        {splash || notfound ? null : <Navbar navItems={navItems} />}
+        <VStack
+          w="100%"
+          px={{
+            base: "6%",
+            md: "12%",
+          }}
+          h="100%"
+        >
+          {children}
+          <Footer />
+        </VStack>
       </VStack>
     </VStack>
   )

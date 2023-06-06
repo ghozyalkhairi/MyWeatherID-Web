@@ -16,7 +16,7 @@ const Info: NextPage<Props> = () => {
             base: "100%",
             md: "50%",
           }}
-          h="75vh"
+          h="65vh"
         >
           <Center
             w="100%"
